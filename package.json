@@ -1,0 +1,26 @@
+{
+  "name": "rn-g2",
+  "version": "1.0.0",
+  "description": "A react-native component of g2 chart which create by Ali Ant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boatlet/rn-g2.git"
+  },
+  "keywords": [
+    "g2",
+    "react-native"
+  ],
+  "author": "boatlet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/boatlet/rn-g2/issues"
+  },
+  "homepage": "https://github.com/boatlet/rn-g2#readme",
+  "dependencies": {
+    "react": "^15.5.4"
+  }
+}

@@ -1,0 +1,52 @@
+/**
+ * Created by wyz on 2016/8/29.
+ */
+import React from 'react';
+import tool from "./G2Tools"
+import { View, WebView, StyleSheet } from "react-native"
+import getHtml from "./chart.html"
+
+export default class G2Chart extends React.Component<any,any> {
+
+  static tool = tool
+
+  render() {
+
+    const js = this.getWebViewJS();
+    const html = getHtml(js);
+    if (this.props.debug) {
+      console.log("html-->", html)
+    }
+
+    const {style} = this.props;
+
+    return (
+      <View style={{ flex: 1 }}>
+        <WebView
+          javaScriptEnabled={true}
+          source={{ html }}
+          style={style}
+          domStorageEnabled={true}
+          {...this.props}
+          scalesPageToFit={true} />
+      </View>
+    );
+  }
+
+  getWebViewJS() {
+    const { data, initChart, chartStyleOpt } = this.props;
+
+    return `
+      var data = ${this.stringify(data)};
+      var chartOpt = ${this.stringify(Object.assign({ id: "c1" }, chartStyleOpt))};
+      var chart = new G2.Chart(chartOpt);
+      var initChart = ${initChart};
+      initChart(chart,data);
+      chart.render();
+    `
+  }
+
+  stringify(obj) {
+    return JSON.stringify(obj)
+  }
+}
